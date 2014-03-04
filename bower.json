@@ -13,7 +13,7 @@
     "Ali Al Dallal <ali@alicoding.com>"
   ],
   "description": "Webmaker Language Picker",
-  "main": "languages.js",
+  "main": "js/languages.js",
   "keywords": [
     "Language",
     "Picker"

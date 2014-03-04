@@ -1,6 +1,7 @@
 {
   "name": "webmaker-language-picker",
   "version": "0.0.2",
+  "main": "js/languages.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/mozilla/webmaker-language-picker.git"
