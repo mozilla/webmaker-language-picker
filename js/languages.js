@@ -32,7 +32,7 @@ define(['jquery', 'list', 'fuzzySearch'], function ($, List, Fuzzy) {
       var matchesLang,
         href = document.location.pathname,
         lang = document.querySelector("html").lang,
-        supportedLanguages = $("#list-of-languages").data("supported"),
+        supportedLanguages = $(".list").data("supported"),
         // matches any of these:
         // `en`, `en-us`, `en-US` or `ady`
         matches = href.match(/([a-z]{2,3})([-]([a-zA-Z]{2}))?/);
