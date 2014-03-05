@@ -1,4 +1,5 @@
 @import 'colors';
+@import (less) "@{language-bower-path}/hint.css/hint.css";
 
 .language-picker {
   position: relative;
@@ -29,18 +30,28 @@
     display: block;
     content: '';
     position: absolute;
-    right: 100%;
-    margin-right: -7px;
-    bottom: 24px;
     width: 14px;
     height: 14px;
     border: 1px solid @yellow;
     border-right: none;
     border-top: none;
     background: white;
+  }
+  &.topLeft:before {
+    right: 100%;
+    bottom: 24px;
+    margin-right: -7px;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+  &.bottomRight:before {
+    left: 100%;
+    top: 24px;
+    margin-left: -7px;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    transform: rotate(-135deg);
   }
   .list a {
     border: none;

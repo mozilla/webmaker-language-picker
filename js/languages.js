@@ -1,12 +1,13 @@
 define(['jquery', 'list', 'fuzzySearch'], function ($, List, Fuzzy) {
   return {
-    ready: function () {
+    ready: function (options) {
 
       var $currentLang = $('#current-language');
       var $languageList = $('#list-of-languages');
       var $languageSearch = $('#language-search');
       var $emptyMessage = $('#empty-message');
       var $clickLang = $('.langList');
+      var cssOptions = {};
 
       $clickLang.click(function () {
         langRedirector($(this).data().value);
@@ -60,10 +61,21 @@ define(['jquery', 'list', 'fuzzySearch'], function ($, List, Fuzzy) {
           return;
         }
 
-        $languageList.css({
-          bottom: (offset.top - 18) + 'px',
-          left: (offset.left + $currentLang.width() + 25) + 'px',
-        }).fadeIn(100);
+        if(options.position === "bottom" && options.arrow === "right") {
+          cssOptions = {
+            top: (offset.top - 18) + 'px',
+            right: (offset.left + $currentLang.width() + 25) + 'px'
+          }
+          $languageList.addClass("bottomRight");
+        } else if(options.position === "top" && options.arrow === "left") {
+          cssOptions = {
+            bottom: (offset.top - 18) + 'px',
+            left: (offset.left + $currentLang.width() + 25) + 'px'
+          }
+          $languageList.addClass("topLeft");
+        }
+
+        $languageList.css(cssOptions).fadeIn(100);
 
         $languageSearch.val('');
         langs.search();
