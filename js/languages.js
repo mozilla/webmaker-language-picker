@@ -65,12 +65,12 @@ define(['jquery', 'list', 'fuzzySearch'], function ($, List, Fuzzy) {
           if($languageList.attr("dir") === "rtl") {
             cssOptions = {
               top: (offset.top - 18) + 'px',
-              right: (offset.left + $currentLang.width() + 25) + 'px'
+              left: (offset.left + $currentLang.width() + 25) + 'px'
             }
           } else {
             cssOptions = {
               top: (offset.top - 18) + 'px',
-              left: (offset.left + $currentLang.width() + 25) + 'px'
+              right: (offset.left + $currentLang.width() + 25) + 'px'
             }
           }
           $languageList.addClass("bottomRight");
