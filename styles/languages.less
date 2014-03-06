@@ -101,7 +101,6 @@
   -moz-column-count: 3;
   -webkit-column-count: 3;
   column-count: 3;
-  -webkit-column-gap: 0;
 }
 
 .col-width {
@@ -174,6 +173,21 @@ label[for="language-search"] {
   left: 0.6em;
   top: 0.5em;
   color: #CCC;
+}
+
+@media (min-width:320px) and (max-width:540px) {
+
+  .col-width {
+    -moz-column-width: 0;
+    -webkit-column-width: 0;
+    column-width: 0;
+  }
+
+  .col {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
 }
 
 /***********************************************************
