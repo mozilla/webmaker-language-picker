@@ -1,6 +1,8 @@
 define(['jquery', 'list', 'fuzzySearch'], function ($, List, Fuzzy) {
   return {
-    ready: function (options) {
+    ready: function (options, mobile) {
+
+      mobile = !!mobile;
 
       var $currentLang = $('#current-language');
       var $languageList = $('#list-of-languages');
@@ -50,7 +52,7 @@ define(['jquery', 'list', 'fuzzySearch'], function ($, List, Fuzzy) {
       };
 
       $currentLang.on('click', function (e) {
-        if ($(window).width() < 500) {
+        if ($(window).width() < 500 && mobile) {
           return;
         }
         e.preventDefault();
