@@ -62,15 +62,29 @@ define(['jquery', 'list', 'fuzzySearch'], function ($, List, Fuzzy) {
         }
 
         if(options.position === "bottom" && options.arrow === "right") {
-          cssOptions = {
-            top: (offset.top - 18) + 'px',
-            right: (offset.left + $currentLang.width() + 25) + 'px'
+          if($languageList.attr("dir") === "rtl") {
+            cssOptions = {
+              top: (offset.top - 18) + 'px',
+              right: (offset.left + $currentLang.width() + 25) + 'px'
+            }
+          } else {
+            cssOptions = {
+              top: (offset.top - 18) + 'px',
+              left: (offset.left + $currentLang.width() + 25) + 'px'
+            }
           }
           $languageList.addClass("bottomRight");
         } else if(options.position === "top" && options.arrow === "left") {
-          cssOptions = {
-            bottom: (offset.top - 18) + 'px',
-            left: (offset.left + $currentLang.width() + 25) + 'px'
+          if($languageList.attr("dir") === "rtl") {
+            cssOptions = {
+              bottom: (offset.top - 18) + 'px',
+              right: (offset.left + $currentLang.width() + 25) + 'px'
+            }
+          } else {
+            cssOptions = {
+              bottom: (offset.top - 18) + 'px',
+              left: (offset.left + $currentLang.width() + 25) + 'px'
+            }
           }
           $languageList.addClass("topLeft");
         }

@@ -9,7 +9,7 @@
 
 <div id="list-of-languages" class="list-of-languages">
   <div class="empty-message">No languages found.</div>
-  <ul class="list" data-supported="{{languages}}">
+  <ul class="list col col-width" data-supported="{{languages}}">
     {% for language in languages %}
     <li data-sort="{% if language == 'en-US' %}1{% endif %}"><a href="/{{language}}{{returnPath}}">
       <span class="localized-name hint--bottom hint--inline" data-hint="{{languageEnglishName(language)}}" >{{ languageNameFor(language) }}</span>
