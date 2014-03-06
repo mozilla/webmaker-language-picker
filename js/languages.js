@@ -52,7 +52,7 @@ define(['jquery', 'list', 'fuzzySearch'], function ($, List, Fuzzy) {
       };
 
       $currentLang.on('click', function (e) {
-        if ($(window).width() < 500 && mobile) {
+        if ($(window).width() < 500 && !mobile) {
           return;
         }
         e.preventDefault();
