@@ -89,6 +89,12 @@ define(['jquery', 'list', 'fuzzySearch'], function ($, List, Fuzzy) {
             }
           }
           $languageList.addClass("topLeft");
+        } else if(options.position === "bottom" && options.arrow === "top") {
+          cssOptions = {
+            top: (offset.top + 30) + 'px',
+            left: (offset.left - $currentLang.width() - 60) + 'px'
+          }
+          $languageList.addClass("bottomTop");
         }
 
         $languageList.css(cssOptions).fadeIn(100);
