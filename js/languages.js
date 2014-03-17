@@ -56,7 +56,7 @@ define(['jquery', 'list', 'fuzzySearch'], function ($, List, Fuzzy) {
           return;
         }
         e.preventDefault();
-        var offset = $currentLang.position();
+        var offset = $currentLang.offset();
 
         if ($languageList.is(':visible')) {
           $languageList.fadeOut(100);
@@ -79,24 +79,26 @@ define(['jquery', 'list', 'fuzzySearch'], function ($, List, Fuzzy) {
         } else if(options.position === "top" && options.arrow === "left") {
           if($languageList.attr("dir") === "rtl") {
             cssOptions = {
-              bottom: (offset.top - 18) + 'px',
-              right: (offset.left + $currentLang.width() + 25) + 'px'
+              bottom: '-25px',
+              right: $currentLang.width() + 18 + 'px'
             }
           } else {
             cssOptions = {
-              bottom: (offset.top - 18) + 'px',
-              left: (offset.left + $currentLang.width() + 25) + 'px'
+              bottom: '-25px',
+              left: $currentLang.width() + 18 + 'px'
             }
           }
           $languageList.addClass("topLeft");
         } else if(options.position === "bottom" && options.arrow === "top") {
           cssOptions = {
-            top: (offset.top + 30) + 'px',
-            left: (offset.left - $currentLang.width() - 60) + 'px'
+            top: offset.top + 5 + 'px',
+            right: offset.left/-10 + 'px'
           }
           $languageList.addClass("bottomTop");
         }
-
+        if(options.nav !== undefined && !options.nav) {
+          cssOptions.top = offset.top/10 + 'px';
+        }
         $languageList.css(cssOptions).fadeIn(100);
 
         $languageSearch.val('');
