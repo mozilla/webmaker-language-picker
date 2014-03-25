@@ -1,4 +1,4 @@
-define(['jquery', 'list', 'fuzzySearch'], function ($, List, Fuzzy) {
+define(['jquery', 'list', 'fuzzySearch', 'analytics'], function ($, List, Fuzzy, analytics) {
   return {
     ready: function (options, mobile) {
 
@@ -12,6 +12,9 @@ define(['jquery', 'list', 'fuzzySearch'], function ($, List, Fuzzy) {
       var cssOptions = {};
 
       $clickLang.click(function () {
+        analytics.event('Language Picked', {
+          label: $(this).data().value
+        });
         langRedirector($(this).data().value);
       });
 
@@ -52,6 +55,7 @@ define(['jquery', 'list', 'fuzzySearch'], function ($, List, Fuzzy) {
       };
 
       $currentLang.on('click', function (e) {
+        analytics.event('Language Picker Opened');
         if ($(window).width() < 500 && !mobile) {
           return;
         }
