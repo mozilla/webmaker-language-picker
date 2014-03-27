@@ -13,7 +13,7 @@
     </div>
     <ul class="list col col-spacing" data-supported="{{languages}}">
     {% for language in languages %}
-    <li data-value="{{language}}" class="langList clearfix"><a{% if language == localeInfo.lang %} class="selected"{% endif %} href="#" target="_self">
+    <li data-value="{{language}}" class="langList clearfix"><a{% if language == localeInfo.lang %} class="selected"{% endif %} target="_self">
       <span class="localized-name hint--bottom hint--inline" data-hint="{{languageEnglishName(language)}}" >{{ languageNameFor(language) }}</span>
       <span class="english-name">{{ languageEnglishName(language) }}</span>
     </a></li>
