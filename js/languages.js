@@ -1,6 +1,7 @@
-define(['jquery', 'list', 'fuzzySearch', 'analytics'], function ($, List, Fuzzy, analytics) {
+define(['jquery', 'list', 'fuzzySearch', 'analytics', 'selectize'], function ($, List, Fuzzy, analytics) {
   return {
     ready: function (options, mobile) {
+      $('#locales').selectize();
 
       mobile = !!mobile;
 
