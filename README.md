@@ -20,6 +20,7 @@ js/
 template/
     languages.html // Main file for full page
     partial.html // Use in header or footer
+    alllanguages.html // dropdown with all languages/locales
 
 # LESS file
 styles/
@@ -37,3 +38,7 @@ styles/
 </div>
 {% endblock %}
 ```
+
+NOTE:
+
+`alllanguages.html` template expect list of locales, see the file [here](template/alllanguages.html).
