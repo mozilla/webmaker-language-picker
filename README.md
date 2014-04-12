@@ -57,6 +57,14 @@ Include these in your require-config paths:
 {% endblock %}
 ```
 
+Initialize:
+
+  // Call this when the element is ready
+  languages.ready({
+    position: "top",
+    arrow: "left"
+  });
+
 ## Usage for partial.html
 
 Include these in your require-config paths:
@@ -74,12 +82,18 @@ Include these in your require-config paths:
 {% endblock %}
 ```
 
+Initialize:
+
+  // Call this when the element is ready
+  languages.ready({
+    position: "top",
+    arrow: "left"
+  });
+
 ## Usage for alllanguages.html
 
 Include these in your require-config paths:
 
-    "list": "path/to/listjs/dist/list.min",
-    "fuzzySearch": "path/to/list.fuzzysearch.js/dist/list.fuzzysearch.min"
     "selectize": "path/to/selectize/dist/js/standalone/selectize.min",
 
 ```html
@@ -91,6 +105,10 @@ Include these in your require-config paths:
 </div>
 {% endblock %}
 ```
+
+Initialize:
+
+$('#locales').selectize();
 
 NOTE:
 
