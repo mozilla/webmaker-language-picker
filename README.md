@@ -1,12 +1,25 @@
 # Webmaker Language Picker
 
-This is a template and library files for Webmaker's Language picker which is being used in all our apps and tools.
+This is a template and library files for Webmaker's Language picker which is being used in all Webmaker's tools.
 
 ## Install
 
 ```
 bower install webmaker-language-picker --save
 ```
+
+**JS Dependencies:**
+
+* requirejs
+* selectizejs
+* fuzzySearch
+* listjs
+
+**CSS Dependencies:**
+
+* font-awesome
+* hint.css
+
 
 ## What's included?
 
@@ -27,7 +40,12 @@ styles/
     languages.less
 ```
 
-## Example
+## Usage for language.html
+
+Include these in your require-config paths:
+
+    "list": "path/to/listjs/dist/list.min",
+    "fuzzySearch": "path/to/list.fuzzysearch.js/dist/list.fuzzysearch.min"
 
 ```html
 {% extends "layout.html" %}
@@ -35,6 +53,41 @@ styles/
 {% block body %}
 <div class="ui-wrapper ui-section" id="language">
   {% include "webmaker-language-picker/template/languages.html" %}
+</div>
+{% endblock %}
+```
+
+## Usage for partial.html
+
+Include these in your require-config paths:
+
+    "list": "path/to/listjs/dist/list.min",
+    "fuzzySearch": "path/to/list.fuzzysearch.js/dist/list.fuzzysearch.min"
+
+```html
+{% extends "layout.html" %}
+{% block requirejs %}{% endblock %}
+{% block body %}
+<div>
+  {% include "webmaker-language-picker/template/partial.html" %}
+</div>
+{% endblock %}
+```
+
+## Usage for alllanguages.html
+
+Include these in your require-config paths:
+
+    "list": "path/to/listjs/dist/list.min",
+    "fuzzySearch": "path/to/list.fuzzysearch.js/dist/list.fuzzysearch.min"
+    "selectize": "path/to/selectize/dist/js/standalone/selectize.min",
+
+```html
+{% extends "layout.html" %}
+{% block requirejs %}{% endblock %}
+{% block body %}
+<div>
+  {% include "webmaker-language-picker/template/alllanguages.html" %}
 </div>
 {% endblock %}
 ```
