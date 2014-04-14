@@ -84,11 +84,13 @@ Include these in your require-config paths:
 
 Initialize:
 
+```
   // Call this when the element is ready
   languages.ready({
     position: "top",
     arrow: "left"
   });
+```
 
 ## Usage for alllanguages.html
 
