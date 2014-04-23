@@ -92,6 +92,33 @@ Initialize:
   });
 ```
 
+## Usage for supportedLanguages.html
+
+Include these in your require-config paths:
+
+"selectize": "path/to/selectize/dist/js/standalone/selectize.min",
+
+```html
+{% extends "layout.html" %}
+{% block requirejs %}{% endblock %}
+{% block body %}
+<div>
+  {% include "webmaker-language-picker/template/supportedLanguages.html" %}
+</div>
+{% endblock %}
+```
+
+Initialize:
+
+```js
+$('#supportedLocales').selectize();
+```
+
+NOTE:
+
+`supportedLanguages.html` template expect list of locales, see the file [here](template/supportedLanguages.html).
+
+
 ## Usage for alllanguages.html
 
 Include these in your require-config paths:
@@ -110,7 +137,9 @@ Include these in your require-config paths:
 
 Initialize:
 
+```js
 $('#locales').selectize();
+```
 
 NOTE:
 
