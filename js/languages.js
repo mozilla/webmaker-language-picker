@@ -1,7 +1,7 @@
 define(['jquery', 'list', 'fuzzySearch', 'analytics'], function ($, List, Fuzzy, analytics) {
   return {
     ready: function (options, mobile) {
-
+      var that = this;
       mobile = !!mobile;
 
       var $currentLang = $('#current-language');
@@ -15,7 +15,7 @@ define(['jquery', 'list', 'fuzzySearch', 'analytics'], function ($, List, Fuzzy,
         analytics.event('Language Picked', {
           label: $(this).data().value
         });
-        langRedirector($(this).data().value);
+        that.langRedirector($(this).data().value);
       });
 
       var fuzzy = new Fuzzy({
@@ -25,34 +25,6 @@ define(['jquery', 'list', 'fuzzySearch', 'analytics'], function ($, List, Fuzzy,
         valueNames: ['localized-name', 'english-name'],
         plugins: [fuzzy]
       });
-
-      function langRedirector(selectedLang) {
-        var matchesLang,
-          href = document.location.pathname,
-          lang = document.querySelector("html").lang,
-          supportedLanguages = $(".list").data("supported"),
-          // matches any of these:
-          // `en`, `en-us`, `en-US` or `ady`
-          matches = href.match(/([a-z]{2,3})([-]([a-zA-Z]{2}))?/);
-
-        if (matches) {
-          if (matches[1] && matches[2]) {
-            matchesLang = matches[1].toLowerCase() + matches[2].toUpperCase();
-          } else {
-            matchesLang = matches[1].toLowerCase();
-          }
-        }
-        // if the selected language is match to the language in the header
-        if (selectedLang === lang) {
-          return;
-          // check if we have any matches and they are exist in the array we have
-        } else if ((matches && matches[0]) && supportedLanguages.indexOf(matchesLang) !== -1) {
-          href = href.replace(matches[0], selectedLang);
-          window.location = href;
-        } else {
-          window.location = "/" + selectedLang + href;
-        }
-      };
 
       $currentLang.on('click', function (e) {
         analytics.event('Language Picker Opened');
@@ -139,6 +111,33 @@ define(['jquery', 'list', 'fuzzySearch', 'analytics'], function ($, List, Fuzzy,
             $emptyMessage.hide();
           }
         });
+      }
+    },
+    langRedirector: function (selectedLang) {
+      var matchesLang,
+        href = document.location.pathname,
+        lang = document.querySelector("html").lang,
+        supportedLanguages = $('*[data-supported]').data('supported');
+        // matches any of these:
+        // `en`, `en-us`, `en-US` or `ady`
+        matches = href.match(/([a-z]{2,3})([-]([a-zA-Z]{2}))?/);
+
+      if (matches) {
+        if (matches[1] && matches[2]) {
+          matchesLang = matches[1].toLowerCase() + matches[2].toUpperCase();
+        } else {
+          matchesLang = matches[1].toLowerCase();
+        }
+      }
+      // if the selected language is match to the language in the header
+      if (selectedLang === lang) {
+        return;
+        // check if we have any matches and they are exist in the array we have
+      } else if ((matches && matches[0]) && supportedLanguages.indexOf(matchesLang) !== -1) {
+        href = href.replace(matches[0], selectedLang);
+        window.location = href;
+      } else {
+        window.location = "/" + selectedLang + href;
       }
     }
   }
