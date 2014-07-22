@@ -11,11 +11,20 @@ define(['jquery', 'list', 'fuzzySearch', 'analytics'], function ($, List, Fuzzy,
       var $clickLang = $('.langList');
       var cssOptions = {};
 
-      $clickLang.click(function () {
+      // Chrome / Safari doesn't seem to pick up this
+      // $clickLang.click(function () {
+      //   analytics.event('Language Picked', {
+      //     label: $(this).data().value
+      //   });
+      //   that.langRedirector($(this).data().value);
+      // });
+
+      // this seems to work on Chrome/Firefox/Safari
+      $('#supportedLocales').change(function(){
         analytics.event('Language Picked', {
-          label: $(this).data().value
+          label: $(this).val()
         });
-        that.langRedirector($(this).data().value);
+        that.langRedirector($(this).val());
       });
 
       var fuzzy = new Fuzzy({
