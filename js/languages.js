@@ -19,8 +19,8 @@ define(['jquery', 'list', 'fuzzySearch', 'analytics'], function ($, List, Fuzzy,
       //   that.langRedirector($(this).data().value);
       // });
 
-      // this seems to work on Chrome/Firefox/Safari
-      $('#supportedLocales').change(function(){
+      // switching to `change` handler seems to work on Chrome/Firefox/Safari
+      $('select[name=supportedLocales]').change(function(){
         analytics.event('Language Picked', {
           label: $(this).val()
         });
