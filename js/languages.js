@@ -11,11 +11,20 @@ define(['jquery', 'list', 'fuzzySearch', 'analytics'], function ($, List, Fuzzy,
       var $clickLang = $('.langList');
       var cssOptions = {};
 
-      $clickLang.click(function () {
+      // Chrome / Safari doesn't seem to pick up this
+      // $clickLang.click(function () {
+      //   analytics.event('Language Picked', {
+      //     label: $(this).data().value
+      //   });
+      //   that.langRedirector($(this).data().value);
+      // });
+
+      // switching to use the `change` event handler seems to work on Chrome/Firefox/Safari
+      $('select[name=supportedLocales]').change(function(){
         analytics.event('Language Picked', {
-          label: $(this).data().value
+          label: $(this).val()
         });
-        that.langRedirector($(this).data().value);
+        that.langRedirector($(this).val());
       });
 
       var fuzzy = new Fuzzy({
