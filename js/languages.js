@@ -1,4 +1,23 @@
-define(['jquery', 'list', 'fuzzySearch', 'analytics'], function ($, List, Fuzzy, analytics) {
+(function(global, factory) {
+  // AMD
+  if (typeof define === 'function' && define.amd) {
+    define(['jquery', 'list', 'fuzzySearch', 'analytics'], factory);
+  }
+
+  // CommonJS
+  else if (typeof module === "object" && module && typeof module.exports === "object") {
+    var jQuery = require('jquery');
+    var list = require('list.js');
+    var fuzzySearch = require('list.fuzzysearch.js');
+    var analytics = require('webmaker-analytics');
+    module.exports = factory(jQuery, list, fuzzySearch, analytics);
+  }
+
+  // Global
+  else {
+    // noop
+  }
+}(this, function LanguagePickerFactory ($, List, Fuzzy, analytics) {
   return {
     ready: function (options, mobile) {
       var that = this;
@@ -142,5 +161,5 @@ define(['jquery', 'list', 'fuzzySearch', 'analytics'], function ($, List, Fuzzy,
         window.location = "/" + selectedLang + href;
       }
     }
-  }
-});
+  };
+}));
