@@ -1,4 +1,23 @@
-define(['jquery', 'list', 'fuzzySearch', 'analytics'], function ($, List, Fuzzy, analytics) {
+(function(global, factory) {
+  // AMD
+  if (typeof define === 'function' && define.amd) {
+    define(['jquery', 'list', 'fuzzySearch', 'analytics'], factory);
+  }
+
+  // CommonJS
+  else if (typeof module === "object" && module && typeof module.exports === "object") {
+    var jQuery = require('jquery');
+    var list = require('list.js');
+    var fuzzySearch = require('list.fuzzysearch.js');
+    var analytics = require('webmaker-analytics');
+    module.exports = factory(jQuery, list, fuzzySearch, analytics);
+  }
+
+  // Global
+  else {
+    // noop
+  }
+}(this, function LanguagePickerFactory ($, List, Fuzzy, analytics) {
   return {
     ready: function (options, mobile) {
       var that = this;
@@ -119,7 +138,7 @@ define(['jquery', 'list', 'fuzzySearch', 'analytics'], function ($, List, Fuzzy,
       var matchesLang,
         href = document.location.pathname,
         lang = document.querySelector("html").lang,
-        supportedLanguages = $('*[data-supported]').data('supported');
+        supportedLanguages = $('*[data-supported]').data('supported'),
         // matches any of these:
         // `en`, `en-us`, `en-US` or `ady`
         matches = href.match(/([a-z]{2,3})([-]([a-zA-Z]{2}))?/);
@@ -142,5 +161,5 @@ define(['jquery', 'list', 'fuzzySearch', 'analytics'], function ($, List, Fuzzy,
         window.location = "/" + selectedLang + href;
       }
     }
-  }
-});
+  };
+}));
