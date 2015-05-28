@@ -136,12 +136,14 @@
     },
     langRedirector: function (selectedLang) {
       var matchesLang,
-        href = document.location.pathname,
+        pathname = document.location.pathname,
+        query = document.location.search,
+        hash = document.location.hash,
         lang = document.querySelector("html").lang,
         supportedLanguages = $('*[data-supported]').data('supported'),
         // matches any of these:
         // `en`, `en-us`, `en-US` or `ady`
-        matches = href.match(/([a-z]{2,3})([-]([a-zA-Z]{2}))?/);
+        matches = pathname.match(/([a-z]{2,3})([-]([a-zA-Z]{2}))?/);
 
       if (matches) {
         if (matches[1] && matches[2]) {
@@ -155,10 +157,10 @@
         return;
         // check if we have any matches and they are exist in the array we have
       } else if ((matches && matches[0]) && supportedLanguages.indexOf(matchesLang) !== -1) {
-        href = href.replace(matches[0], selectedLang);
-        window.location = href;
+        pathname = pathname.replace(matches[0], selectedLang);
+        window.location = pathname + query + hash;
       } else {
-        window.location = "/" + selectedLang + href;
+        window.location = "/" + selectedLang + pathname + query + hash;
       }
     }
   };
